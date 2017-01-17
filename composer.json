@@ -1,5 +1,15 @@
 {
+
+	"keywords": [
+		"framework", "silex", "rest", "api"
+	],
+	"homepage": "https://github.com/diegoandrepoli/selix-rest",
+	"license": "MIT",
+	"authors": [{
+		"name": "Diego Andre Poli",
+		"email": "diegoandrepoli@gmail.com"
+	}],
     "require": {
-        "silex/silex": "~1.3"
+        "silex/silex": "~2.0"
     }
 }
