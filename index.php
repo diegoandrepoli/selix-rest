@@ -15,12 +15,12 @@
 	}
 	
 	$app->get('/', function() use ($app, $dbh){
-		
+			
 		$sth = $dbh->prepare('SELECT id, url, shortened FROM links');
-    	$sth->execute();
-    	$livros = $sth->fetchAll(PDO::FETCH_ASSOC);
- 
-    	return $app->json($livros);		
+		$sth->execute();
+		$result = $sth->fetchAll(PDO::FETCH_ASSOC);
+		
+    	return $app->json($result);		
 	});
 	
 	$app->run();
