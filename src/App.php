@@ -1,23 +1,17 @@
 <?php	
-	$app = new Silex\Application();
+
+	use Silex\Provider\DoctrineServiceProvider;
 	
 	/**
-	 * Test using MySQL database
+	 * Register doctrine
 	 */
-	$dsn = 'mysql:dbname=linkable;host=127.0.0.1;charset=utf8';
+	$app->register(new DoctrineServiceProvider(), array(
+  		"db.options" => $app["db.options"]
+	));
 	
-	try {
-    	$dbh = new PDO($dsn, 'root', 'master');
-	} catch (PDOException $e) {
-    	echo 'Connection failed: ' . $e->getMessage();
-	}
 	
-	$app->get('/', function() use ($app, $dbh){
-			
-		$sth = $dbh->prepare('SELECT id, url, shortened FROM links');
-		$sth->execute();
-		$result = $sth->fetchAll(PDO::FETCH_ASSOC);
-		
+	$app->get('/', function() use ($app, $dbh){		
+		$result = $app['db']->fetchAll('SELECT * FROM links');		
     	return $app->json($result);		
 	});
 	
