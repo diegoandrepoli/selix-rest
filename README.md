@@ -1,4 +1,4 @@
-# Silex and Doctrine API REST example
+# Sixlab
 Simple example for use Silex with REST API and Doctrine ORM.
 
 ## Database Configuration
